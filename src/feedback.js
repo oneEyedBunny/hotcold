@@ -1,8 +1,9 @@
 import React from 'react';
 
 function determineFeedback(props) {
-    let guess = props.state.currentGuess
+    let guess = props.state.currentGuess;
     let differene = Math.abs(guess - props.state.correctAnswer);
+    console.log(difference);
 
     if(guess = props.state.answer) {
         return props.state.feedback = "You guessed the number!"

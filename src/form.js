@@ -4,18 +4,22 @@ import GuessCount from './guess-count';
 export default class Form extends React.Component {
     constructor(props){
         super(props)
-        this.state = { value: ''};
+        this.state = { 
+            value: ''
+        };
         this.onSubmit = this.onSubmit.bind(this);
     }
 
       onSubmit(event) {
         event.preventDefault();
+        console.log(event.target.value);
         value= event.target.value
         guess= parseInt(value, 10);
         if (isNaN(guess)) {
           this.setState({ feedback: 'Please enter a valid number' });
         } else { 
         this.setState({value: value});
+        guesses.push(value);
       }
     }
 
@@ -40,7 +44,7 @@ export default class Form extends React.Component {
                 >Guess
                 </button>
                 <div>
-                    <GuessCount {guesses} />
+                    <GuessCount {...guesses} />
                 </div>
             </form>
         );

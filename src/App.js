@@ -7,7 +7,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: createAnswer(),
+      answer: this.createAnswer(),
       currentGuess: "",
       guesses: [],
       feedback: "Make your guess!"
@@ -31,20 +31,22 @@ export default class App extends React.Component {
     const guessList = this.state.guesses.toSting();
 
     return (
-      <div>
-        <Header onClick={event => this.generateNewGame()} />
-      </div>
-      <div>
-       <Feedback  props={this.state}/>
-     </div>
-      <div>
+      <div className="page-container">
         <div>
-          <Form />
+          <Header onClick={event => this.generateNewGame()} />
         </div>
-        <div className='guess-list'>
-          {guessList} 
+        <div>
+          <Feedback  props={this.state}/>
         </div>
-      </div>
+        <div>
+          <div>
+            <Form />
+          </div>
+          <div className='guess-list'>
+            {guessList} 
+          </div>
+        </div>
+     </div>
     );
   }
 }
