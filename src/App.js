@@ -2,13 +2,12 @@ import React from 'react';
 import Header from './header';
 import Form from './form';
 import Feedback from './feedback';
-import GuessCount from './guess-count';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      answer: this.createAnswer,
+      answer: createAnswer(),
       currentGuess: "",
       guesses: [],
       feedback: "Make your guess!"
@@ -21,17 +20,19 @@ export default class App extends React.Component {
 
   generateNewGame() {
     this.setState( {
-      answer: this.createAnswer,
+      answer: createAnswer(),
+      currentGuess: "",
       guesses: [],
+      feedback: "Make your guess!"
     })
   }
 
   render() {
-    console.log("testing here");
+    const guessList = this.state.guesses.toSting();
 
     return (
       <div>
-        <Header />
+        <Header onClick={event => this.generateNewGame()} />
       </div>
       <div>
        <Feedback  props={this.state}/>
@@ -41,7 +42,7 @@ export default class App extends React.Component {
           <Form />
         </div>
         <div className='guess-list'>
-          {this.props.state.guesses} 
+          {guessList} 
         </div>
       </div>
     );

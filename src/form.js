@@ -20,29 +20,29 @@ export default class Form extends React.Component {
     }
 
     render () {
-        //??
+        const guesses = this.props.state.guesses;
+
+        return (
+            <form onSubmit={event => this.onSubmit(event)}>
+                <input
+                    type="number"
+                    name="userGuess"
+                    value="this.props.state.value"
+                    aria-label="your number guess"
+                    min="1"
+                    max="100"
+                    required
+                />
+                <button 
+                    type="submit" 
+                    name="submit"
+                    id="guessButton"
+                >Guess
+                </button>
+                <div>
+                    <GuessCount {guesses} />
+                </div>
+            </form>
+        );
     }
-    
-    return (
-        <form onSubmit={(e) => this.onSubmit(e)}>
-            <input
-                type="number"
-                name="userGuess"
-                value="this.props.state.value"
-                aria-label="your number guess"
-                min="1"
-                max="100"
-                required
-            />
-            <button 
-                type="submit" 
-                name="submit"
-                id="guessButton"
-            >Guess
-            </button>
-            <div>
-                <GuessCount guesses=this.props.state.guesses />
-            </div>
-        </form>
-    );
 }

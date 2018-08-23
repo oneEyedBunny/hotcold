@@ -7,10 +7,10 @@ function determineFeedback(props) {
     if(guess = props.state.answer) {
         return props.state.feedback = "You guessed the number!"
         
-    } elseif (difference <=15 ) {
+    } else if (difference <=15 ) {
         return props.state.feedback = "Very Hot"
 
-    } elseif (difference <=30 ) {
+    } else if (difference <=30 ) {
         return props.state.feedback = "Warm"
         
     } else {
