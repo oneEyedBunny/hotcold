@@ -1,5 +1,5 @@
 import React from 'react';
-import GuessCount from './guess-count';
+import GuessCount from '../presentation-components/guess-count';
 
 export default class Form extends React.Component {
   constructor(props){

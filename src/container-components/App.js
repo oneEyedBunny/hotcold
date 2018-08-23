@@ -1,7 +1,7 @@
 import React from 'react';
-import Header from './header';
+import Header from '../presentation-components/header';
 import Form from './form';
-import Feedback from './feedback';
+import Feedback from '../presentation-components/feedback';
 
 export default class App extends React.Component {
   constructor(props) {
