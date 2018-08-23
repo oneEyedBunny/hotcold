@@ -32,22 +32,21 @@ export default class App extends React.Component {
 
     return (
       <div className="page-container">
-        <div>
-          <Header onClick={event => this.generateNewGame()} />
-        </div>
-        <div>
-          <Feedback  props={this.state}/>
-        </div>
-        <div>
-          <div>
-            <Form />
-          </div>
-          <div className='guess-list'>
-            {guessList} 
-          </div>
-        </div>
-     </div>
+      <div>
+      <Header onClick={event => this.generateNewGame()} />
+      </div>
+      <div>
+      <Feedback  props={this.state}/>
+      </div>
+      <div>
+      <div>
+      <Form />
+      </div>
+      <div className='guess-list'>
+      {guessList}
+      </div>
+      </div>
+      </div>
     );
   }
 }
-
