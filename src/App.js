@@ -1,14 +1,17 @@
 import React from 'react';
 import Header from './header';
 import Form from './form';
-import Output from './output';
+import Feedback from './feedback';
+import GuessCount from './guess-count';
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       answer: this.createAnswer,
-      guess: ''
+      currentGuess: "",
+      guesses: [],
+      feedback: "Make your guess!"
     }
   }
 
@@ -17,25 +20,28 @@ export default class App extends React.Component {
   }
 
   generateNewGame() {
-    console.log(testing);
+    this.setState( {
+      answer: this.createAnswer,
+      guesses: [],
+    })
   }
 
   render() {
     console.log("testing here");
 
-
     return (
-      <div className='header'>
+      <div>
         <Header />
       </div>
-      <div className='quiz-container'>
-        <div>Make Your Guess!</div>
-        <div className='input-area'>
-          console.log("Hi");
+      <div>
+       <Feedback  props={this.state}/>
+     </div>
+      <div>
+        <div>
           <Form />
         </div>
-        <div className='output-area'>
-          <Output /> 
+        <div className='guess-list'>
+          {this.props.state.guesses} 
         </div>
       </div>
     );

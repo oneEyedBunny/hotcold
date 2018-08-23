@@ -1,30 +1,48 @@
 import React from 'react';
+import GuessCount from './guess-count';
 
 export default class Form extends React.Component {
     constructor(props){
         super(props)
         this.state = { value: ''};
-        
         this.onSubmit = this.onSubmit.bind(this);
     }
 
       onSubmit(event) {
         event.preventDefault();
-        this.setState({value: event.target.value});
+        value= event.target.value
+        guess= parseInt(value, 10);
+        if (isNaN(guess)) {
+          this.setState({ feedback: 'Please enter a valid number' });
+        } else { 
+        this.setState({value: value});
+      }
     }
 
+    render () {
+        //??
+    }
+    
     return (
-        <form className="guess" onSubmit={(e) => this.onSubmit(e)}>
+        <form onSubmit={(e) => this.onSubmit(e)}>
             <input
                 type="number"
-                // ref={input => this.textInput = input}
+                name="userGuess"
+                value="this.props.state.value"
                 aria-label="your number guess"
-                min = "1"
-                max = "100"
+                min="1"
+                max="100"
+                required
             />
-            <button>Guess</button>
-            <button type="button" value={this.state.value} onClick={() => this.onSubmit}>
+            <button 
+                type="submit" 
+                name="submit"
+                id="guessButton"
+            >Guess
             </button>
+            <div>
+                <GuessCount guesses=this.props.state.guesses />
+            </div>
         </form>
     );
 }
