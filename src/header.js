@@ -6,7 +6,7 @@ export default function Header(props) {
     <div className='header'>
     <div className='new-game'></div>
     <button onClick={props.onClick} >New Game</button>
-    <div>Hot or Cold?></div>
+    <div>Hot or Cold?</div>
     </div>
   )
 }

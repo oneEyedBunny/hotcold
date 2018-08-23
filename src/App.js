@@ -20,15 +20,49 @@ export default class App extends React.Component {
 
   generateNewGame() {
     this.setState( {
-      answer: createAnswer(),
+      answer: this.createAnswer(),
       currentGuess: "",
       guesses: [],
       feedback: "Make your guess!"
     })
   }
 
+  // changeFeedback(feedback){
+  //   this.setState({
+  //     feedback: feedback
+  //   })
+  // }
+
+determineFeedback() {
+    let guess = this.state.currentGuess;
+    let difference = Math.abs(guess - this.state.answer);
+    console.log(difference);
+
+    if(guess === this.state.answer) {
+      this.setState({
+        feedback: "You guessed the number!"
+      })
+
+    } else if (difference <=15 ) {
+      this.setState({
+        feedback: "Very Hot"
+      })
+
+    } else if (difference <=30 ) {
+      this.setState({
+        feedback: "Warm"
+      })
+
+    } else {
+      this.setState({
+        feedback: "Cold"
+      })
+    }
+  }
+
+
   render() {
-    const guessList = this.state.guesses.toSting();
+    const guessList = this.state.guesses.toString();
 
     return (
       <div className="page-container">
@@ -36,11 +70,11 @@ export default class App extends React.Component {
       <Header onClick={event => this.generateNewGame()} />
       </div>
       <div>
-      <Feedback  props={this.state}/>
+      <Feedback feedback={this.state.feedback}/>
       </div>
       <div>
       <div>
-      <Form />
+      <Form guesses={this.state.guesses} onDetermineFeedback = {event => this.determineFeedback()}/>
       </div>
       <div className='guess-list'>
       {guessList}

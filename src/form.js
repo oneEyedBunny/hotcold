@@ -13,18 +13,19 @@ export default class Form extends React.Component {
   onSubmit(event) {
     event.preventDefault();
     console.log(event.target.value);
-    value= event.target.value
-    guess= parseInt(value, 10);
+    let value= event.target.value
+    let guess= parseInt(value, 10);
     if (isNaN(guess)) {
       this.setState({ feedback: 'Please enter a valid number' });
     } else {
       this.setState({value: value});
-      guesses.push(value);
+      this.props.guesses.push(value);
+      this.props.ondetermineFeedback();
     }
   }
 
   render () {
-    const guesses = this.props.state.guesses;
+    const guesses = this.props.guesses;
 
     return (
       <form onSubmit={event => this.onSubmit(event)}>
@@ -44,7 +45,7 @@ export default class Form extends React.Component {
       >Guess
       </button>
       <div>
-      <GuessCount {...guesses} />
+      <GuessCount guesses={guesses} />
       </div>
       </form>
     );
